@@ -47,7 +47,7 @@ class FAISSDocumentStore(SQLDocumentStore):
         vector_dim: Optional[int] = None,
         embedding_dim: int = 768,
         faiss_index_factory_str: str = "Flat",
-        faiss_index: Optional[faiss.swigfaiss.Index] = None,
+        faiss_index = None,
         return_embedding: bool = False,
         index: str = "document",
         similarity: str = "dot_product",
@@ -140,7 +140,7 @@ class FAISSDocumentStore(SQLDocumentStore):
             self.embedding_dim = embedding_dim
 
         self.faiss_index_factory_str = faiss_index_factory_str
-        self.faiss_indexes: Dict[str, faiss.swigfaiss.Index] = {}
+        self.faiss_indexes = {}
         if faiss_index:
             self.faiss_indexes[index] = faiss_index
         else:
